@@ -71,5 +71,5 @@ def main():
             df_view = pd.concat([df_data, ypred["prediction_label"], ypred["prediction_score_Ativo"], ypred["prediction_score_Cancelado"], ypred["prediction_score_Suspenso"]], axis = 1)
 
             st.dataframe(df_view.style.applymap(color_pred, subset = ['prediction_label']))
-        else:
-            st.warning('Arquivo CSV não foi carregado')
+    else:
+        st.warning('Arquivo CSV não foi carregado')
