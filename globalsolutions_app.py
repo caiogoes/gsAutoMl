@@ -29,20 +29,27 @@ with st.sidebar:
 
 #Tela principal
 if file:
+    print("1")
     #carregamento do CSV
     Xtest = pd.read_csv(file, sep=',')
+    print("2")
     df_data = Xtest.copy()
-
+    print("3")
+    
     le = preprocessing.LabelEncoder()
+    print("4")
     for col in Xtest.columns:
         Xtest[col] = le.fit_transform(Xtest[col])
 
+    print("5")
     #carregamento / instanciamento do modelo pkl
     mdl_lgbm = load_model('model')
+    print("6")
 
     #predict do modelo
     ypred = predict_model(mdl_lgbm, data = Xtest, raw_score = True)
-
+    print("7")
+    
     with st.expander('Visualizar CSV carregado:', expanded = True):
         c1, _ = st.columns([2,4])
         qtd_linhas = c1.slider('Visualizar quantas linhas do CSV:', 
